@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "3d-force-graph": "^1.56.4",
     "@angular/animations": "~8.2.11",
     "@angular/common": "~8.2.11",
     "@angular/compiler": "~8.2.11",
@@ -19,6 +20,8 @@
     "@angular/platform-browser": "~8.2.11",
     "@angular/platform-browser-dynamic": "~8.2.11",
     "@angular/router": "~8.2.11",
+    "@types/webgl2": "0.0.5",
+    "bootstrap": "^4.3.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

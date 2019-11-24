@@ -1,0 +1,65 @@
+<div  style="margin: 20px; max-width: 600px; margin-left: 200px; margin-right:200px;">
+    <h2>Alle Gotthelf-Druckwerke</h2>
+  
+    <div class="content-box">
+  
+      <!--button type="submit" class="btn btn-success" style="color:black; margin-top:20px; margin-bottom:30px;" (click)="getTextFromServer(1)">Hole Text C5G_Geld_3 aus eXist-DB</button-->
+      <!--button type="submit" class="btn btn-success" style="color:black; margin-top:20px; margin-bottom:30px;" (click)="getDocumentParagraphsFromServer(1)">Hole Text "C2G Geld und Geist 1" aus eXist-DB (nur p-tags, hkg-b)</button-->
+      <!--button type="submit" class="btn btn-success" style="color:black; margin-top:20px; margin-bottom:30px;" (click)="getDocumentFromServer(1)">getXMLDocumentAsJSON (hkg-b)</button-->
+  
+      <!--p>Herausgeber: <u>{{firstName}}</u></p-->
+  
+      <!--iframe src="https://bl.ocks.org/vasturiano/raw/02affe306ce445e423f992faeea13521/"></iframe-->
+  
+      <ng-container *ngIf="data.collection">
+        <p *ngFor="let work of data.collection[1].document">
+          <ng-container *ngIf="work.title.length;">
+            <a href="{{work['#text']}}" target="_blank">{{work.title}}</a>
+          </ng-container>
+        </p>
+      </ng-container>
+  
+      <ng-container *ngIf="data.TEI">
+        <p *ngFor="let p of data.TEI.text.body.div.p; let i = index;">
+          |<u><b>P{{i+1}}</b> {{p['xml:id']}}</u>|<br />
+          
+          <ng-container *ngIf="p.app; else noApp">
+            <ng-container *ngIf="p.app.length; else oneApp">
+              <ng-container *ngFor="let app of p.app; let j = index;"> <!--{{p.app.length + 1}} &lt;app&gt; vorhanden
+                <b>((j = {{j}}))</b--> {{p['#text'][j]}} <span class="lem">{{app.lem}}</span>
+              </ng-container>
+            </ng-container>
+            
+            <ng-template #oneApp>
+              <span class="one-app">{{p['#text'][0]}}</span> <span class="lem">{{p.app.lem}}</span>
+            </ng-template>
+        
+            <span>
+              {{p['#text'][p['#text'].length - 1]}}
+            </span>
+          </ng-container>
+          <ng-template #noApp>
+            <span class="no-app">{{p['#text']}}</span>
+          </ng-template>
+        </p>
+      </ng-container>
+        <!--ul *ngIf="!pIndexIsChosen && contentReceived" class="paragraphs">
+        <li *ngFor="let p of paragraphs.body.p;">
+          {{p.text}}
+        </li>
+      </ul>
+      <ul *ngIf="pIndexIsChosen" class="paragraphs" id="chosenParagraph">
+        <li>
+          <b>Absatz {{pIndex}}</b><br />{{textOfChosenParagraph}} 
+        </li>
+      </ul>
+    </div-->
+  
+    <!--div class="content-box select-p" [ngClass]="{ 'show': pMenuVisible }">
+      <form>
+        <label for="name">Zeige nur folgenden Absatz<br />(Zahl zwischen 1 und 113 eingeben):&nbsp;</label>
+        <input type="text" [(ngModel)]="pIndex" name="pIndex" (ngModelChange)="onTextChange($event)" />
+      </form>
+    </div-->
+  
+  </div>
