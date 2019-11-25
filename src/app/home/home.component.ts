@@ -13,7 +13,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
-    const imgs = ['cat.jpg', 'dog.jpg', 'eagle.jpg', 'elephant.jpg', 'grasshopper.jpg', 'octopus.jpg', 'owl.jpg', 'panda.jpg', 'squirrel.jpg', 'tiger.jpg', 'whale.jpg'];
+    //const imgs = ['cat.jpg', 'dog.jpg', 'eagle.jpg', 'elephant.jpg', 'grasshopper.jpg', 'octopus.jpg', 'owl.jpg', 'panda.jpg', 'squirrel.jpg', 'tiger.jpg', 'whale.jpg'];
+    const imgs = ['jg_alpenrosen_1849_176x176.jpg', 'absign_264x161.jpg', 'Bilder_und_Sagen_6_160x258.jpg', 'elephant.jpg', 'Dorfschule_264x222.jpg', 'octopus.jpg', 'cat.jpg', 'njg_160x202.jpg', 'squirrel.jpg', 'NBK184001_264x317.jpg', 'whale.jpg'];
     // Random connected graph
     const gData = {
       nodes: imgs.map((img, id) => ({ id, img })),
