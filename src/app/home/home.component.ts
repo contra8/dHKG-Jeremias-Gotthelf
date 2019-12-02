@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
           target: Math.round(Math.random() * (id-1))
         }))
     };
-    const Graph = ForceGraph3D()
+    /*const Graph = ForceGraph3D()
       (document.getElementById('3d-graph'))
       .nodeThreeObject(({ img }) => {
         // use a sphere as a drag handle
@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
         return obj;
       })
       .graphData(gData);
-
+*/
 
   }
 
