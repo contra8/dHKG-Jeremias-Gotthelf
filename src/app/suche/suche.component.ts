@@ -4,7 +4,7 @@ import ForceGraph3D from '3d-force-graph';
 
 
 @Component({
-  selector: 'app-suche',
+  selector: 'app-home',
   templateUrl: './suche.component.html',
   styleUrls: ['./suche.component.scss']
 })
@@ -82,11 +82,11 @@ export class SucheComponent implements OnInit {
     })
     .graphData(this.gData);
 
-    /*
+    
     this.renderer.setSize(window.innerWidth / 2.0, window.innerHeight / 2.0);
     this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
     this.animate();
-    */
+    
   }
 
   animate() {
