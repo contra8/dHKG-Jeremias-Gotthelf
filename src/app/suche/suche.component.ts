@@ -7,8 +7,8 @@ import ForceGraph3D from '3d-force-graph';
   templateUrl: './suche.component.html',
   styleUrls: ['./suche.component.scss']
 })
-export class SucheComponent implements OnInit {
-  @ViewChild('rendererContainer', { static: false }) rendererContainer: ElementRef;
+export class SucheComponent {
+  @ViewChild('graphContainer', { static: false }) graphContainer: ElementRef;
 
   images = ['jg_alpenrosen_1849_176x176.jpg', 'absign_264x161.jpg', 'Bilder_und_Sagen_6_160x258.jpg', 'Pupikofer_Schriftvorlagen.jpg', 'Dorfschule_264x222.jpg', 'RAN10_ArmenerziehungsanstaltTrachselwald.png', 'cat.jpg', 'njg_160x202.jpg', '2019-08-19-10.46.48_300x300.jpg', 'NBK184001_264x317.jpg', 'oxy2018.png'];
   /*
@@ -18,16 +18,21 @@ export class SucheComponent implements OnInit {
   mesh = null;
   */
 
+  gData;
+
   constructor() {
 
   }
 
+  /*
   ngOnInit() {
     console.log("SucheComponent ngOnInit meldet");
   }
+  */
 
   ngAfterViewInit() {
-    const gData = {
+
+    this.gData = {
       nodes: this.images.map((img, id) => ({ id, img })),
       links: [...Array(this.images.length).keys()]
         .filter(id => id)
@@ -38,7 +43,7 @@ export class SucheComponent implements OnInit {
     };
 
     const Graph = ForceGraph3D()
-    (document.getElementById('3d-graph'))
+    (document.getElementById('threeDgraph'))
     .nodeThreeObject(({ img }) => {
       // use a sphere as a drag handle
       const obj = new THREE.Mesh(
@@ -54,8 +59,12 @@ export class SucheComponent implements OnInit {
       obj.add(sprite);
       return obj;
     })
-    .graphData(gData);
+    .graphData(this.gData)
+    .width(500)
+    .showNavInfo(true)
+    .backgroundColor("#044918");
 
+    this.graphContainer.nativeElement.canvas.width = 100;
   }
 
   animate() {
