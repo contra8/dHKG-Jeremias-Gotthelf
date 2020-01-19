@@ -63,8 +63,6 @@ export class SucheComponent {
     .width(500)
     .showNavInfo(true)
     .backgroundColor("#044918");
-
-    this.graphContainer.nativeElement.canvas.width = 100;
   }
 
   animate() {
