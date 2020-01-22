@@ -62,9 +62,7 @@ export class SucheComponent {
     .graphData(this.gData)
     .width(500)
     .showNavInfo(true)
-    .backgroundColor("#044918")
-    .nodeLabel('test');
-
+    .backgroundColor("#044918");
   }
 
   animate() {
