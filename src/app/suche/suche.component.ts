@@ -43,7 +43,7 @@ export class SucheComponent {
     };
 
     const Graph = ForceGraph3D()
-    (document.getElementById('threeDgraph'))
+    (document.getElementById('threeDgraph')).nodeLabel("test")
     .nodeThreeObject(({ img }) => {
       // use a sphere as a drag handle
       const obj = new THREE.Mesh(
@@ -62,9 +62,9 @@ export class SucheComponent {
     .graphData(this.gData)
     .width(500)
     .showNavInfo(true)
-    .backgroundColor("#044918");
+    .backgroundColor("#044918")
+    .nodeLabel('test');
 
-    this.graphContainer.nativeElement.canvas.width = 100;
   }
 
   animate() {
