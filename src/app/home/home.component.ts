@@ -67,7 +67,7 @@ export class HomeComponent implements OnInit {
     .width(this.universeWidth) // default: window.width :-(
     .height(this.universeHeight)
     .showNavInfo(true)
-    .backgroundColor("#000000");
+    .backgroundColor("#005500");
   }
 
   animate() {
