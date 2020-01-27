@@ -15,6 +15,14 @@ export class RestService {
     return body || { };
   }
 
+  getCorrespondencePartners(): Observable<any> {
+    return this.http.get(endpoint + '/hkgcode/routines/getters/getCorrespondencePartners.xqy').pipe(map(this.extractData));
+  }
+
+  createListOfAllXmlDocuments(): Observable<any> {
+    return this.http.get(endpoint + '/hkgcode/routines/converters/createListOfAllXmlDocuments.xqy').pipe(map(this.extractData));
+  }
+
   getTitlesAndUrlsOfAllDocuments(): Observable<any> {
     return this.http.get(endpoint + '/hkgcode/routines/getters/getTitlesAndUrlsOfAllXmlFiles.xqy').pipe(map(this.extractData));
   }

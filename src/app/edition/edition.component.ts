@@ -39,7 +39,8 @@ export class EditionComponent implements OnInit {
   ngOnInit() {
     //this.getDocumentFromServer(1);
     if (!globals.contentReceived)
-      this.getTitlesAndUrlsOfAllDocuments();
+      //this.getTitlesAndUrlsOfAllDocuments();
+      this.getCorrespondencePartners();
   }
 
   onTextChange(value) {
@@ -58,6 +59,22 @@ export class EditionComponent implements OnInit {
       this.textOfChosenParagraph = this.paragraphs.body.p[this.pIndex - 1].text;
     }
     console.log("pIndexIsChosen = " + this.pIndexIsChosen);
+  }
+
+  getCorrespondencePartners() {
+    console.log("Klasse edition.component.ts, Methode getCorrespondencePartners meldet");
+    this.rest.getCorrespondencePartners().subscribe((data: {}) => {
+      this.waitingForData = false;
+      this.data = data;
+    });
+  }
+
+  createListOfAllXmlDocuments() {
+    console.log("Klasse edition.component.ts, Methode getTitlesAndUrlsOfAllDocuments meldet");
+    this.rest.createListOfAllXmlDocuments().subscribe((data: {}) => {
+      this.waitingForData = false;
+      this.data = data;
+    });
   }
 
   getTitlesAndUrlsOfAllDocuments() {
