@@ -1,13 +1,14 @@
 import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
 import * as THREE from 'three';
+import SpriteText from 'three-spritetext';
 import ForceGraph3D from '3d-force-graph';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-korrespondenz',
+  templateUrl: './korrespondenz.component.html',
+  styleUrls: ['./korrespondenz.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class KorrespondenzComponent implements OnInit {
 
   @ViewChild('graphContainer', { static: false }) graphContainer: ElementRef;
 
@@ -47,6 +48,8 @@ export class HomeComponent implements OnInit {
     this.universeWidth = document.getElementById('graphContainer').offsetWidth;
 
     const Graph = ForceGraph3D()
+    
+    /*
     (document.getElementById('threeDGraph'))
     .nodeThreeObject(({ img }) => {
       // use a sphere as a drag handle
@@ -68,6 +71,28 @@ export class HomeComponent implements OnInit {
     .height(this.universeHeight)
     .showNavInfo(true)
     .backgroundColor("#005500");
+    */
+      (document.getElementById('3d-graph'))
+        .jsonUrl('../datasets/miserables.json')
+        .nodeAutoColorBy('group')
+        .nodeThreeObject(node => {
+          // use a sphere as a drag handle
+          const obj = new THREE.Mesh(
+            new THREE.SphereGeometry(10),
+            new THREE.MeshBasicMaterial({ depthWrite: false, transparent: true, opacity: 0 })
+          );
+
+          // add text sprite as child
+          const sprite = new SpriteText(node.id);
+          sprite.color = node.color;
+          sprite.textHeight = 8;
+          obj.add(sprite);
+
+          return obj;
+        });
+
+    // Spread nodes a little wider
+    Graph.d3Force('charge').strength(-120);
   }
 
   animate() {

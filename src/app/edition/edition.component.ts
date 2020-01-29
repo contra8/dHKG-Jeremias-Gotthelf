@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { RestService } from '../rest.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as THREE from 'three';
+import * as THREESPRITETEXT from 'three'
 import ForceGraph3D from '3d-force-graph';
 import * as globals from '../globals';
 

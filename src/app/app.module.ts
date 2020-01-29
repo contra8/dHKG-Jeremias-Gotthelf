@@ -13,10 +13,12 @@ import { DokumentComponent } from './dokument/dokument.component';
 import { SucheComponent } from './suche/suche.component';
 import { AktuellesComponent } from './aktuelles/aktuelles.component';
 import { ProjektComponent } from './projekt/projekt.component';
+import { KorrespondenzComponent } from './korrespondenz/korrespondenz.component';
 
 const appRoutes: Routes = [
   { path: 'aktuelles', component: AktuellesComponent },
   { path: 'edition', component: EditionComponent },
+  { path: 'korrespondenz', component: KorrespondenzComponent },
   { path: 'projekt', component: ProjektComponent },
   { path: 'suche', component: SucheComponent },
   { path: 'home', component: HomeComponent },
@@ -40,7 +42,8 @@ const appRoutes: Routes = [
     DokumentComponent,
     SucheComponent,
     AktuellesComponent,
-    ProjektComponent
+    ProjektComponent,
+    KorrespondenzComponent
   ],
   imports: [
     RouterModule.forRoot(
